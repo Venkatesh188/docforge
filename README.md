@@ -40,6 +40,19 @@
 - OpenAI API key ([Get one here](https://platform.openai.com/api-keys))
 
 ### Quick Install
+
+**Option 1: Install from PyPI (Recommended)**
+```bash
+pip install docforge
+```
+
+After installation, use:
+```bash
+python -m docforge.docforge init
+python -m docforge.docforge generate "Your project idea"
+```
+
+**Option 2: Install from Source**
 ```bash
 # Clone the repository
 git clone https://github.com/docforge-community/docforge-opensource.git
@@ -49,7 +62,7 @@ cd docforge-opensource
 pip install -r requirements.txt
 
 # Initialize DocForge (creates .env file and shows available document types)
-python docforge.py init
+python -m docforge.docforge init
 ```
 
 ### Package Installation
@@ -66,7 +79,7 @@ pip install -e .
 ### Initial Setup
 1. **Run initialization** to create the `.env` file:
 ```bash
-python docforge.py init
+python -m docforge.docforge init
 ```
 
 2. **Edit the `.env` file** with your OpenAI API key:
@@ -97,42 +110,42 @@ The recommended approach is to start with a Product Requirements Document (PRD) 
 **Step 1: Generate a PRD**
 ```bash
 # Generate a PRD with user stories
-python docforge.py generate PRD "AI-powered chatbot for customer service"
+python -m docforge.docforge generate PRD "AI-powered chatbot for customer service"
 ```
 
 **Step 2: Review and Optionally Revise the PRD**
 ```bash
 # Review the generated PRD file, then optionally add more specifications
-python docforge.py revise ai-powered-chatbot-for-customer-service -s "Add multi-language support and integration with Slack and Microsoft Teams"
+python -m docforge.docforge revise ai-powered-chatbot-for-customer-service -s "Add multi-language support and integration with Slack and Microsoft Teams"
 ```
 
 **Step 3: Generate Additional Documents Based on Validated PRD**
 ```bash
 # Generate architecture, testing, and deployment documents based on the PRD
-python docforge.py continue ai-powered-chatbot-for-customer-service ARCH TEST DEPLOY
+python -m docforge.docforge continue ai-powered-chatbot-for-customer-service ARCH TEST DEPLOY
 
 # Or generate specific documents
-python docforge.py continue ai-powered-chatbot-for-customer-service ARCHITECTURE
-python docforge.py continue ai-powered-chatbot-for-customer-service BUSINESS MARKET
+python -m docforge.docforge continue ai-powered-chatbot-for-customer-service ARCHITECTURE
+python -m docforge.docforge continue ai-powered-chatbot-for-customer-service BUSINESS MARKET
 ```
 
 #### Alternative: Generate Single Documents
 ```bash
 # Generate individual documents (without PRD workflow)
-python docforge.py generate SRS "E-commerce platform for handmade crafts"
-python docforge.py generate ARCHITECTURE "Mobile banking application"
+python -m docforge.docforge generate SRS "E-commerce platform for handmade crafts"
+python -m docforge.docforge generate ARCHITECTURE "Mobile banking application"
 ```
 
 #### Legacy: Generate Complete Documentation Set
 ```bash
 # Generate all default documents at once
-python docforge.py generate "E-commerce platform for handmade crafts"
-python docforge.py generate "Mobile task management app" --docs project_charter,srs,architecture
+python -m docforge.docforge generate "E-commerce platform for handmade crafts"
+python -m docforge.docforge generate "Mobile task management app" --docs project_charter,srs,architecture
 ```
 
 #### List Available Document Types and Aliases
 ```bash
-python docforge.py list-docs
+python -m docforge.docforge list-docs
 ```
 
 This command shows all available document types and their quick aliases for single document generation.
@@ -164,12 +177,12 @@ The PRD-first workflow offers several advantages:
 
 #### Check Project Status
 ```bash
-python docforge.py status my-ecommerce-platform
+python -m docforge.docforge status my-ecommerce-platform
 ```
 
 #### List All Projects
 ```bash
-python docforge.py list-projects
+python -m docforge.docforge list-projects
 ```
 
 ## 📁 Project Structure
@@ -214,22 +227,22 @@ docforge/
 
 ### Example 1: Complete Project Documentation
 ```bash
-python docforge.py generate "AI-powered customer service chatbot" --context "React frontend, Node.js backend, PostgreSQL database"
+python -m docforge.docforge generate "AI-powered customer service chatbot" --context "React frontend, Node.js backend, PostgreSQL database"
 ```
 
 ### Example 2: Architecture-Focused Documentation
 ```bash
-python docforge.py generate "Microservices e-commerce platform" --docs architecture,deployment_guide,operations_manual
+python -m docforge.docforge generate "Microservices e-commerce platform" --docs architecture,deployment_guide,operations_manual
 ```
 
 ### Example 3: Business-Focused Documentation
 ```bash
-python docforge.py generate "SaaS project management tool" --docs business_case,market_requirements,vision_brief
+python -m docforge.docforge generate "SaaS project management tool" --docs business_case,market_requirements,vision_brief
 ```
 
 ### Example 4: Custom Project Name
 ```bash
-python docforge.py generate "Build a mobile app" --name "MyAwesomeApp" --docs srs,architecture
+python -m docforge.docforge generate "Build a mobile app" --name "MyAwesomeApp" --docs srs,architecture
 ```
 
 ## 📂 Document Organization
@@ -255,7 +268,7 @@ Each project gets its own directory with:
 
 ## 🎯 Document Type Selection
 
-When you run `python docforge.py init`, DocForge will show you all available document types:
+When you run `python -m docforge.docforge init`, DocForge will show you all available document types:
 
 ```
 📋 Available Document Types (10):
@@ -275,7 +288,7 @@ When you run `python docforge.py init`, DocForge will show you all available doc
 
 You can then generate specific documents using the type names:
 ```bash
-python docforge.py generate "My project" --docs project_charter,srs,architecture
+python -m docforge.docforge generate "My project" --docs project_charter,srs,architecture
 ```
 
 ## 🔧 Advanced Configuration
