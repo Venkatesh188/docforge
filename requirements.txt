@@ -1,18 +1,30 @@
-# DocForge Dependencies
-# Core AI and document generation
+# DocForge - Open Source Edition
+# Simplified dependencies for self-contained document generation
+
+# ── Core AI & Document Generation ──────────────────────────────────
+# Note: Use specific version ranges for compatibility
 crewai>=0.141.0,<1.0.0
 openai>=1.0.0,<2.0.0
 tiktoken>=0.6.0
 
-# Data validation and settings
+# ── Configuration & Environment ────────────────────────────────────
 pydantic>=2.6.0,<3.0.0
 pydantic-settings>=2.0.0
 python-dotenv>=1.0.0
 
-# Utilities
+# ── File Operations & Utilities ────────────────────────────────────
 PyYAML>=6.0.0
 python-slugify>=8.0.0
+
+# ── Optional: HTTP client for future integrations ─────────────────
 httpx>=0.24.0
 
-# Optional dependencies
-# notion-client>=2.0.0  # Uncomment for Notion integration
+# ── Optional: Notion integration (for those who want it) ──────────
+notion-client>=2.0.0
+
+# ── Development & Testing (optional) ───────────────────────────────
+# Uncomment if you plan to contribute to DocForge development
+# pytest>=7.0.0
+# pytest-asyncio>=0.21.0
+# black>=23.0.0
+# flake8>=6.0.0

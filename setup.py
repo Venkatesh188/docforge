@@ -23,7 +23,7 @@ if req_file.exists():
         ]
 
 setup(
-    name="docforge",
+    name="docforge-ai",
     version="2.0.0",
     author="DocForge Community",
     author_email="community@docforge.dev",

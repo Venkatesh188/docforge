@@ -43,7 +43,7 @@
 
 **Option 1: Install from PyPI (Recommended)**
 ```bash
-pip install docforge
+pip install docforge-ai
 ```
 
 After installation, use:

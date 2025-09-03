@@ -3,7 +3,7 @@ requires = ["setuptools>=45", "wheel", "setuptools-scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "docforge"
+name = "docforge-ai"
 version = "2.0.0"
 description = "Self-contained AI-powered documentation generator"
 readme = "README.md"
