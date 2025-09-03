@@ -1,0 +1,44 @@
+# Include essential files
+include README.md
+include LICENSE
+include CONTRIBUTING.md
+include CHANGELOG.md
+include requirements.txt
+include setup.py
+include pyproject.toml
+
+# Include all prompts and templates
+recursive-include prompts *.md
+recursive-include backend/app/templates *.py
+
+# Include documentation
+recursive-include docs *.md *.rst *.txt
+recursive-include examples *.md *.txt
+
+# Include GitHub templates
+recursive-include .github *.yml *.yaml *.md
+
+# Include test files if any
+recursive-include tests *.py
+
+# Exclude unnecessary files
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *.pyd
+global-exclude __pycache__
+global-exclude .git*
+global-exclude *.so
+global-exclude .DS_Store
+global-exclude Thumbs.db
+
+# Exclude development and build artifacts
+exclude .gitignore
+exclude .editorconfig
+exclude *.log
+exclude .env
+prune build
+prune dist
+prune *.egg-info
+prune __pycache__
+prune .pytest_cache
+prune .mypy_cache

@@ -1,0 +1,18 @@
+# DocForge Dependencies
+# Core AI and document generation
+crewai>=0.141.0,<1.0.0
+openai>=1.0.0,<2.0.0
+tiktoken>=0.6.0
+
+# Data validation and settings
+pydantic>=2.6.0,<3.0.0
+pydantic-settings>=2.0.0
+python-dotenv>=1.0.0
+
+# Utilities
+PyYAML>=6.0.0
+python-slugify>=8.0.0
+httpx>=0.24.0
+
+# Optional dependencies
+# notion-client>=2.0.0  # Uncomment for Notion integration
