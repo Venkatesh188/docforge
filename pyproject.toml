@@ -64,11 +64,12 @@ dev = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/docforge-community/docforge-opensource"
-"Bug Reports" = "https://github.com/docforge-community/docforge-opensource/issues"
-"Feature Requests" = "https://github.com/docforge-community/docforge-opensource/issues/new?template=feature_request.yml"
-"Documentation" = "https://github.com/docforge-community/docforge-opensource/wiki"
-"Source" = "https://github.com/docforge-community/docforge-opensource"
+"Homepage" = "https://github.com/Venkatesh188/docforge"
+"Bug Reports" = "https://github.com/Venkatesh188/docforge/issues"
+"Feature Requests" = "https://github.com/Venkatesh188/docforge/issues/new?template=feature_request.yml"
+"Documentation" = "https://github.com/Venkatesh188/docforge/wiki"
+"Source" = "https://github.com/Venkatesh188/docforge"
+"PyPI" = "https://pypi.org/project/docforge-ai/"
 
 [project.scripts]
 docforge = "docforge.docforge:cli"

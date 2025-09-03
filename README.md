@@ -3,8 +3,29 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-green.svg)](https://openai.com/)
+[![PyPI version](https://badge.fury.io/py/docforge-ai.svg)](https://badge.fury.io/py/docforge-ai)
+[![Downloads](https://pepy.tech/badge/docforge-ai)](https://pepy.tech/project/docforge-ai)
 
 **DocForge** is a powerful, self-contained AI-powered documentation generator that transforms simple project ideas into comprehensive, professional software documentation. Built with CrewAI and OpenAI, it generates enterprise-grade documents including project charters, requirements specifications, architecture documents, and more.
+
+## 🚀 Quick Start
+
+**Install from PyPI:**
+```bash
+# Using pip
+pip install docforge-ai
+
+# Using uv (faster)
+uv pip install docforge-ai
+```
+
+**Get started in seconds:**
+```bash
+python -m docforge.docforge init
+python -m docforge.docforge generate "AI-powered chatbot for customer service"
+```
+
+> **📦 Available on PyPI**: Install with `pip install docforge-ai` or `uv pip install docforge-ai`
 
 ## 🚀 Features
 
@@ -39,24 +60,33 @@
 - Python 3.8 or higher
 - OpenAI API key ([Get one here](https://platform.openai.com/api-keys))
 
-### Quick Install
+### Install from PyPI (Recommended)
 
-**Option 1: Install from PyPI (Recommended)**
+**Using pip:**
 ```bash
 pip install docforge-ai
 ```
 
-After installation, use:
+**Using uv (faster and more reliable):**
 ```bash
-python -m docforge.docforge init
-python -m docforge.docforge generate "Your project idea"
+# Install uv if you don't have it
+pip install uv
+
+# Install docforge-ai
+uv pip install docforge-ai
 ```
 
-**Option 2: Install from Source**
+**Using conda:**
+```bash
+conda install -c conda-forge pip
+pip install docforge-ai
+```
+
+### Install from Source (Development)
 ```bash
 # Clone the repository
-git clone https://github.com/docforge-community/docforge-opensource.git
-cd docforge-opensource
+git clone https://github.com/Venkatesh188/docforge.git
+cd docforge
 
 # Install dependencies
 pip install -r requirements.txt
@@ -64,6 +94,33 @@ pip install -r requirements.txt
 # Initialize DocForge (creates .env file and shows available document types)
 python -m docforge.docforge init
 ```
+
+## 🎯 Getting Started
+
+After installation, follow these steps:
+
+1. **Initialize DocForge:**
+   ```bash
+   python -m docforge.docforge init
+   ```
+   This creates a `.env` file where you'll add your OpenAI API key.
+
+2. **Add your OpenAI API key:**
+   ```bash
+   # Edit the .env file
+   OPENAI_API_KEY=your_actual_openai_api_key_here
+   ```
+
+3. **Generate your first document:**
+   ```bash
+   python -m docforge.docforge generate "AI-powered chatbot for customer service"
+   ```
+
+4. **Explore available commands:**
+   ```bash
+   python -m docforge.docforge --help
+   python -m docforge.docforge list-docs
+   ```
 
 ### Package Installation
 ```bash
