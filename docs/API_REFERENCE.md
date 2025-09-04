@@ -16,7 +16,7 @@
 
 ### DocForgeCore
 
-**Location**: `docforge.py`
+**Location**: `docforge-ai.py`
 
 The main orchestrator class that coordinates document generation workflows.
 
@@ -830,7 +830,7 @@ The CLI interface provides the primary way to interact with DocForge.
 
 ```bash
 # General format
-python docforge.py <command> [arguments] [options]
+docforge-ai <command> [arguments] [options]
 ```
 
 ### Available Commands
@@ -838,7 +838,7 @@ python docforge.py <command> [arguments] [options]
 #### `init` - Initialize DocForge
 
 ```bash
-python docforge.py init
+docforge-ai init
 
 # Description: Initialize DocForge in the current directory
 # Actions:
@@ -851,7 +851,7 @@ python docforge.py init
 #### `generate` - Generate Documentation
 
 ```bash
-python docforge.py generate <idea> [options]
+docforge-ai generate <idea> [options]
 
 # Arguments:
 #   idea (str): Your project idea or description
@@ -862,13 +862,13 @@ python docforge.py generate <idea> [options]
 #   --name <name>       Custom project name
 
 # Examples:
-python docforge.py generate "E-commerce platform for handmade crafts"
+docforge-ai generate "E-commerce platform for handmade crafts"
 
-python docforge.py generate "Mobile fitness app" \
+docforge-ai generate "Mobile fitness app" \
   --docs srs,hld,test_specifications \
   --context "React Native, Node.js backend, PostgreSQL"
 
-python docforge.py generate "AI chatbot" \
+docforge-ai generate "AI chatbot" \
   --name "Customer Service Bot" \
   --context "24/7 operation, multi-language support"
 ```
@@ -876,7 +876,7 @@ python docforge.py generate "AI chatbot" \
 #### `list-docs` - List Document Types
 
 ```bash
-python docforge.py list-docs
+docforge-ai list-docs
 
 # Description: Display all available document types
 # Output: List of document types with descriptions
@@ -885,7 +885,7 @@ python docforge.py list-docs
 #### `list-projects` - List Generated Projects
 
 ```bash
-python docforge.py list-projects
+docforge-ai list-projects
 
 # Description: Display all generated projects with summary information
 # Output: Project names, document counts, creation dates, status
@@ -894,13 +894,13 @@ python docforge.py list-projects
 #### `status` - Get Project Status
 
 ```bash
-python docforge.py status <project-slug>
+docforge-ai status <project-slug>
 
 # Arguments:
 #   project-slug (str): URL-friendly project identifier
 
 # Example:
-python docforge.py status e-commerce-platform
+docforge-ai status e-commerce-platform
 
 # Output: Detailed project information including:
 #   - Project name and ID
@@ -1083,7 +1083,7 @@ def get_config_summary() -> Dict[str, Any]: ...
 
 ```python
 import asyncio
-from docforge import DocForgeCore
+from docforge-ai import DocForgeCore
 
 async def basic_example():
     """Basic document generation example"""

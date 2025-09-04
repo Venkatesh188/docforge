@@ -5,10 +5,10 @@ Thank you for your interest in contributing to DocForge! We welcome contribution
 ## 🚀 Quick Start
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/your-username/docforge-opensource.git`
+2. Clone your fork: `git clone https://github.com/your-username/docforge-ai-opensource.git`
 3. Create a branch: `git checkout -b feature/your-feature-name`
 4. Make your changes
-5. Test your changes: `python docforge.py generate "test project"`
+5. Test your changes: `docforge-ai generate "test project"`
 6. Commit and push: `git commit -m "Add your feature" && git push origin feature/your-feature-name`
 7. Open a Pull Request
 
@@ -86,18 +86,18 @@ Before submitting a PR:
 
 1. **Test document generation**:
    ```bash
-   python docforge.py generate "Test project" --docs project_charter
+   docforge-ai generate "Test project" --docs project_charter
    ```
 
 2. **Test CLI commands**:
    ```bash
-   python docforge.py list-docs
-   python docforge.py list-projects
+   docforge-ai list-docs
+   docforge-ai list-projects
    ```
 
 3. **Check for errors**:
    ```bash
-   python -m py_compile docforge.py
+   python -m py_compile docforge-ai.py
    ```
 
 ### Commit Messages
@@ -163,7 +163,7 @@ DocumentType.YOUR_NEW_TYPE: {
 
 4. **Test thoroughly**:
    ```bash
-   python docforge.py generate "Test project" --docs your_new_type
+   docforge-ai generate "Test project" --docs your_new_type
    ```
 
 ### Template Best Practices

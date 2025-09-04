@@ -30,45 +30,45 @@ This guide provides detailed installation instructions for DocForge on different
 
 ```bash
 # Install from PyPI (when published)
-pip install docforge-opensource
+pip install docforge-ai-opensource
 
 # Initialize and run
-docforge init
-docforge generate "Your project idea"
+docforge-ai init
+docforge-ai generate "Your project idea"
 ```
 
 ### **Method 2: Git Clone (Development)**
 
 ```bash
 # Clone the repository
-git clone https://github.com/docforge-community/docforge-opensource.git
-cd docforge-opensource
+git clone https://github.com/docforge-ai-community/docforge-ai-opensource.git
+cd docforge-ai-opensource
 
 # Create virtual environment (recommended)
-python -m venv docforge-env
-source docforge-env/bin/activate  # On Windows: docforge-env\Scripts\activate
+python -m venv docforge-ai-env
+source docforge-ai-env/bin/activate  # On Windows: docforge-ai-env\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
 
 # Initialize DocForge
-python docforge.py init
+docforge-ai init
 ```
 
 ### **Method 3: Docker (Containerized)**
 
 ```bash
 # Clone the repository
-git clone https://github.com/docforge-community/docforge-opensource.git
-cd docforge-opensource
+git clone https://github.com/docforge-ai-community/docforge-ai-opensource.git
+cd docforge-ai-opensource
 
 # Build Docker image
-docker build -t docforge .
+docker build -t docforge-ai .
 
 # Run DocForge in container
 docker run -v $(pwd)/generated-docs:/app/generated-docs \
            -v $(pwd)/.env:/app/.env \
-           docforge python docforge.py generate "Your project idea"
+           docforge-ai docforge-ai generate "Your project idea"
 ```
 
 ## 🛠️ Platform-Specific Instructions
@@ -81,8 +81,8 @@ docker run -v $(pwd)/generated-docs:/app/generated-docs \
 python --version
 
 # Clone repository
-git clone https://github.com/docforge-community/docforge-opensource.git
-cd docforge-opensource
+git clone https://github.com/docforge-ai-community/docforge-ai-opensource.git
+cd docforge-ai-opensource
 
 # Create virtual environment
 python -m venv venv
@@ -92,7 +92,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 
 # Initialize
-python docforge.py init
+docforge-ai init
 ```
 
 #### **Option B: Using PowerShell**
@@ -104,7 +104,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-python docforge.py init
+docforge-ai init
 ```
 
 #### **Windows Troubleshooting**
@@ -121,8 +121,8 @@ python docforge.py init
 brew install python
 
 # Clone repository
-git clone https://github.com/docforge-community/docforge-opensource.git
-cd docforge-opensource
+git clone https://github.com/docforge-ai-community/docforge-ai-opensource.git
+cd docforge-ai-opensource
 
 # Create virtual environment
 python3 -m venv venv
@@ -132,7 +132,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # Initialize
-python docforge.py init
+docforge-ai init
 ```
 
 #### **Using System Python**
@@ -144,7 +144,7 @@ python3 --version
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-python docforge.py init
+docforge-ai init
 ```
 
 #### **macOS Troubleshooting**
@@ -164,8 +164,8 @@ sudo apt update
 sudo apt install python3 python3-pip python3-venv git
 
 # Clone repository
-git clone https://github.com/docforge-community/docforge-opensource.git
-cd docforge-opensource
+git clone https://github.com/docforge-ai-community/docforge-ai-opensource.git
+cd docforge-ai-opensource
 
 # Create virtual environment
 python3 -m venv venv
@@ -175,7 +175,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # Initialize
-python docforge.py init
+docforge-ai init
 ```
 
 #### **CentOS/RHEL/Fedora**
@@ -191,7 +191,7 @@ sudo dnf install python3 python3-pip git
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-python docforge.py init
+docforge-ai init
 ```
 
 #### **Linux Troubleshooting**
@@ -208,7 +208,7 @@ After installation, you need to configure your OpenAI API key:
 
 ```bash
 # Initialize DocForge (creates .env file)
-python docforge.py init
+docforge-ai init
 
 # Edit .env file with your preferred editor
 nano .env
@@ -237,10 +237,10 @@ OPENAI_MODEL=gpt-4
 
 ```bash
 # Test basic functionality
-python docforge.py list-docs
+docforge-ai list-docs
 
 # Test configuration
-python docforge.py generate "Test project for verification" --docs project_charter
+docforge-ai generate "Test project for verification" --docs project_charter
 
 # Check generated files
 ls generated-docs/
@@ -270,9 +270,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Create non-root user
-RUN useradd --create-home --shell /bin/bash docforge
-RUN chown -R docforge:docforge /app
-USER docforge
+RUN useradd --create-home --shell /bin/bash docforge-ai
+RUN chown -R docforge-ai:docforge-ai /app
+USER docforge-ai
 
 # Create directories
 RUN mkdir -p generated-docs storage
@@ -282,7 +282,7 @@ ENV PYTHONPATH=/app
 ENV DOCFORGE_CLI_MODE=true
 
 # Default command
-CMD ["python", "docforge.py", "--help"]
+CMD ["python", "docforge-ai.py", "--help"]
 ```
 
 ### **Docker Compose Setup**
@@ -290,7 +290,7 @@ CMD ["python", "docforge.py", "--help"]
 ```yaml
 version: '3.8'
 services:
-  docforge:
+  docforge-ai:
     build: .
     volumes:
       - ./generated-docs:/app/generated-docs
@@ -397,8 +397,8 @@ After installation, verify everything works:
 - [ ] Virtual environment created and activated
 - [ ] All dependencies installed without errors
 - [ ] OpenAI API key configured in `.env` file
-- [ ] `docforge.py init` runs without errors
-- [ ] `docforge.py list-docs` shows available document types
+- [ ] `docforge-ai.py init` runs without errors
+- [ ] `docforge-ai.py list-docs` shows available document types
 - [ ] Test document generation completes successfully
 - [ ] Generated files appear in `generated-docs/` directory
 
@@ -409,14 +409,14 @@ Once installation is complete:
 1. **Read the [Quick Start Guide](../README.md#quick-start)**
 2. **Explore [Examples](../examples/README.md)**
 3. **Try generating your first documentation**
-4. **Join our [Community Discussions](https://github.com/docforge-community/docforge-opensource/discussions)**
+4. **Join our [Community Discussions](https://github.com/docforge-ai-community/docforge-ai-opensource/discussions)**
 
 ## 🆘 Getting Help
 
 If you encounter issues not covered here:
 
-1. **Check [GitHub Issues](https://github.com/docforge-community/docforge-opensource/issues)** for known problems
-2. **Search [GitHub Discussions](https://github.com/docforge-community/docforge-opensource/discussions)** for community help
+1. **Check [GitHub Issues](https://github.com/docforge-ai-community/docforge-ai-opensource/issues)** for known problems
+2. **Search [GitHub Discussions](https://github.com/docforge-ai-community/docforge-ai-opensource/discussions)** for community help
 3. **Create a new issue** with detailed error messages and system information
 4. **Include the following in bug reports**:
    - Operating system and version

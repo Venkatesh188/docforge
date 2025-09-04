@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "docforge-ai"
-version = "2.0.0"
+version = "2.0.2"
 description = "Self-contained AI-powered documentation generator"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 authors = [
     {name = "DocForge Community", email = "community@docforge.dev"}
 ]
@@ -21,11 +21,10 @@ classifiers = [
     "Topic :: Text Processing :: Markup",
 
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Operating System :: OS Independent",
     "Environment :: Console",
 ]
@@ -36,13 +35,11 @@ keywords = [
     "automation",
     "software-development",
     "project-management",
-    "crewai",
     "openai",
     "markdown"
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 dependencies = [
-    "crewai>=0.141.0,<1.0.0",
     "openai>=1.0.0,<2.0.0",
     "tiktoken>=0.6.0",
     "pydantic>=2.6.0,<3.0.0",
@@ -54,7 +51,6 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-notion = ["notion-client>=2.0.0"]
 dev = [
     "pytest>=7.0.0",
     "pytest-asyncio>=0.21.0",
@@ -72,7 +68,7 @@ dev = [
 "PyPI" = "https://pypi.org/project/docforge-ai/"
 
 [project.scripts]
-docforge = "docforge.docforge:cli"
+docforge-ai = "docforge.docforge:cli"
 
 [tool.setuptools.packages.find]
 include = ["backend*", "prompts*", "docforge*"]
@@ -86,7 +82,7 @@ exclude = ["tests*", "docs*", "examples*", "build*", "dist*", "*.egg-info*"]
 
 [tool.black]
 line-length = 88
-target-version = ['py38']
+target-version = ['py310']
 include = '\.pyi?$'
 extend-exclude = '''
 /(
@@ -127,7 +123,7 @@ exclude = [
 ]
 
 [tool.mypy]
-python_version = "3.8"
+python_version = "3.10"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true

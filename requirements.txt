@@ -2,8 +2,7 @@
 # Simplified dependencies for self-contained document generation
 
 # ── Core AI & Document Generation ──────────────────────────────────
-# Note: Use specific version ranges for compatibility
-crewai>=0.141.0,<1.0.0
+# Note: Minimal dependencies - using OpenAI directly instead of heavy CrewAI
 openai>=1.0.0,<2.0.0
 tiktoken>=0.6.0
 
@@ -19,12 +18,10 @@ python-slugify>=8.0.0
 # ── Optional: HTTP client for future integrations ─────────────────
 httpx>=0.24.0
 
-# ── Optional: Notion integration (for those who want it) ──────────
-notion-client>=2.0.0
-
-# ── Development & Testing (optional) ───────────────────────────────
+# ── Development & Testing (for contributors only) ─────────────────
 # Uncomment if you plan to contribute to DocForge development
 # pytest>=7.0.0
 # pytest-asyncio>=0.21.0
 # black>=23.0.0
 # flake8>=6.0.0
+# mypy>=1.0.0

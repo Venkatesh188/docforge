@@ -373,10 +373,11 @@ Examples:
         parser.print_help()
         return
     
-    # Initialize DocForge core
-    docforge = DocForgeCore()
+    # Initialize DocForge core only when needed
+    docforge = None
     
     if args.command == 'generate':
+        docforge = DocForgeCore()
         # Parse document types
         doc_types = None
         if args.docs:
@@ -412,6 +413,7 @@ Examples:
         print("  python docforge.py generate \"My project\"  # Uses default document types")
     
     elif args.command == 'status':
+        docforge = DocForgeCore()
         result = await docforge.get_project_status(args.project_slug)
         if result["success"]:
             project = result["project"]
@@ -429,6 +431,7 @@ Examples:
             sys.exit(1)
     
     elif args.command == 'list-projects':
+        docforge = DocForgeCore()
         projects = await docforge.list_projects()
         if projects:
             print("📁 Generated Projects:")
@@ -446,8 +449,9 @@ Examples:
     elif args.command == 'init':
         print("🚀 Initializing DocForge...")
         
-        # Create directories (only generated docs, no storage folder)
-        docforge.generated_docs_dir.mkdir(parents=True, exist_ok=True)
+        # Create only the generated-docs directory (storage will be created when needed)
+        generated_docs_dir = Path("generated-docs")
+        generated_docs_dir.mkdir(parents=True, exist_ok=True)
         
         # Create .env template if it doesn't exist
         env_path = Path('.env')

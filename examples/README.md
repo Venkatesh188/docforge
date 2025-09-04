@@ -66,13 +66,13 @@ Use the project ideas from these examples to generate your own documentation:
 
 ```bash
 # Generate docs for an e-commerce platform
-python docforge.py generate "E-commerce platform for handmade crafts with seller onboarding, payment processing, and mobile app"
+docforge-ai generate "E-commerce platform for handmade crafts with seller onboarding, payment processing, and mobile app"
 
 # Generate AI chatbot documentation
-python docforge.py generate "AI-powered customer service chatbot with natural language processing and CRM integration"
+docforge-ai generate "AI-powered customer service chatbot with natural language processing and CRM integration"
 
 # Generate mobile app docs
-python docforge.py generate "Fitness tracking mobile app with workout planning, nutrition logging, and social features"
+docforge-ai generate "Fitness tracking mobile app with workout planning, nutrition logging, and social features"
 ```
 
 ### **3. Learn Best Practices**
@@ -102,7 +102,7 @@ Each example includes:
 
 **Command Used**:
 ```bash
-python docforge.py generate "E-commerce platform for handmade crafts" --context "Multi-vendor marketplace with seller tools, payment processing, mobile app, inventory management, and customer support system"
+docforge-ai generate "E-commerce platform for handmade crafts" --context "Multi-vendor marketplace with seller tools, payment processing, mobile app, inventory management, and customer support system"
 ```
 
 ### **🤖 AI Chatbot Service**
@@ -123,7 +123,7 @@ python docforge.py generate "E-commerce platform for handmade crafts" --context 
 
 **Command Used**:
 ```bash
-python docforge.py generate "AI customer service chatbot" --docs high_level_design,low_level_design,operations_manual,business_case --context "NLP-powered chatbot with CRM integration, multi-language support, and analytics dashboard"
+docforge-ai generate "AI customer service chatbot" --docs high_level_design,low_level_design,operations_manual,business_case --context "NLP-powered chatbot with CRM integration, multi-language support, and analytics dashboard"
 ```
 
 ### **📱 Mobile Fitness App**
@@ -144,7 +144,7 @@ python docforge.py generate "AI customer service chatbot" --docs high_level_desi
 
 **Command Used**:
 ```bash
-python docforge.py generate "Mobile fitness tracking app with social features" --context "iOS and Android app with workout planning, nutrition tracking, social community, and integration with Apple Health and Google Fit"
+docforge-ai generate "Mobile fitness tracking app with social features" --context "iOS and Android app with workout planning, nutrition tracking, social community, and integration with Apple Health and Google Fit"
 ```
 
 ## 💡 **Tips for Better Results**
@@ -154,10 +154,10 @@ The more specific context you provide, the better DocForge's output:
 
 ```bash
 # Generic (limited context)
-python docforge.py generate "Online store"
+docforge-ai generate "Online store"
 
 # Specific (rich context)
-python docforge.py generate "Online store" --context "B2B wholesale platform for restaurant supplies with bulk ordering, custom pricing tiers, delivery scheduling, and integration with POS systems"
+docforge-ai generate "Online store" --context "B2B wholesale platform for restaurant supplies with bulk ordering, custom pricing tiers, delivery scheduling, and integration with POS systems"
 ```
 
 ### **Choose Relevant Document Types**
@@ -226,7 +226,7 @@ Brief description of the project and why it's interesting.
 
 ## DocForge Command
 ```bash
-python docforge.py generate "Your project idea" --context "Additional context"
+docforge-ai generate "Your project idea" --context "Additional context"
 ```
 
 ## Generated Documents

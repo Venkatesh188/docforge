@@ -26,12 +26,12 @@
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/docforge-community/docforge-opensource.git
-cd docforge-opensource
+git clone https://github.com/docforge-ai-community/docforge-ai-opensource.git
+cd docforge-ai-opensource
 
 # 2. Create virtual environment
-python -m venv docforge-dev
-source docforge-dev/bin/activate  # On Windows: docforge-dev\Scripts\activate
+python -m venv docforge-ai-dev
+source docforge-ai-dev/bin/activate  # On Windows: docforge-ai-dev\Scripts\activate
 
 # 3. Install dependencies
 pip install -r requirements.txt
@@ -45,7 +45,7 @@ cp .env.template .env
 # Edit .env with your OpenAI API key
 
 # 6. Initialize DocForge
-python docforge.py init
+docforge-ai init
 
 # 7. Run basic tests
 python tests/test_basic.py
@@ -73,7 +73,7 @@ mypy>=1.0.0                # Type checking
 #### **VS Code Settings (.vscode/settings.json)**
 ```json
 {
-    "python.defaultInterpreterPath": "./docforge-dev/bin/python",
+    "python.defaultInterpreterPath": "./docforge-ai-dev/bin/python",
     "python.formatting.provider": "black",
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
@@ -94,8 +94,8 @@ mypy>=1.0.0                # Type checking
 ### **Project Structure Deep Dive**
 
 ```
-docforge-opensource/
-├── 🐍 docforge.py                 # Main CLI entry point
+docforge-ai-opensource/
+├── 🐍 docforge-ai.py                 # Main CLI entry point
 ├── 📁 backend/                    # Core application logic
 │   └── app/                       # Application modules
 │       ├── __init__.py
@@ -135,7 +135,7 @@ docforge-opensource/
 
 ```mermaid
 graph TD
-    CLI[docforge.py] --> Core[DocForgeCore Class]
+    CLI[docforge-ai.py] --> Core[DocForgeCore Class]
     
     Core --> Storage[LocalStorageService]
     Core --> Agents[DocumentAgentService] 
@@ -158,7 +158,7 @@ graph TD
 ### **1. DocForgeCore (Main Orchestrator)**
 
 ```python
-# Location: docforge.py
+# Location: docforge-ai.py
 class DocForgeCore:
     """
     Central orchestrator for document generation workflow.
@@ -300,8 +300,8 @@ class SimpleSettings:
 
 ```bash
 # 1. Start development session
-cd docforge-opensource
-source docforge-dev/bin/activate  # Activate virtual environment
+cd docforge-ai-opensource
+source docforge-ai-dev/bin/activate  # Activate virtual environment
 
 # 2. Pull latest changes
 git pull origin main
@@ -311,12 +311,12 @@ git checkout -b feature/your-feature-name
 
 # 4. Make changes and test
 python tests/test_basic.py
-python docforge.py generate "Test project" --docs project_charter
+docforge-ai generate "Test project" --docs project_charter
 
 # 5. Code quality checks
 black .                    # Format code
 flake8 .                  # Check linting
-mypy docforge.py          # Type checking
+mypy docforge-ai.py          # Type checking
 
 # 6. Run comprehensive tests
 python scripts/package_verification.py
@@ -451,10 +451,10 @@ DOCUMENT_AGENTS = {
 #### **Step 4: Test Implementation**
 ```bash
 # Test the new document type
-python docforge.py list-docs  # Should show new type
+docforge-ai list-docs  # Should show new type
 
 # Generate test document
-python docforge.py generate "REST API for e-commerce platform" --docs api_documentation --context "Node.js, Express, PostgreSQL, JWT authentication"
+docforge-ai generate "REST API for e-commerce platform" --docs api_documentation --context "Node.js, Express, PostgreSQL, JWT authentication"
 
 # Verify output
 ls generated-docs/rest-api-for-e-commerce-platform/
@@ -621,7 +621,7 @@ async def test_document_generation_workflow():
 def test_cli_help_command():
     """Test CLI help command"""
     result = subprocess.run(
-        ["python", "docforge.py", "--help"],
+        ["python", "docforge-ai.py", "--help"],
         capture_output=True,
         text=True
     )
@@ -1118,16 +1118,16 @@ Reviewers will check for:
 
 ```bash
 # Development shortcuts
-alias dg="python docforge.py generate"
-alias dl="python docforge.py list-docs"
-alias dp="python docforge.py list-projects"
+alias dg="docforge-ai generate"
+alias dl="docforge-ai list-docs"
+alias dp="docforge-ai list-projects"
 alias dt="python tests/test_basic.py"
 alias dv="python scripts/package_verification.py"
 
 # Quality checks
 alias dformat="black . && echo 'Code formatted'"
 alias dlint="flake8 . && echo 'Linting passed'"
-alias dtype="mypy docforge.py backend/app && echo 'Type checking passed'"
+alias dtype="mypy docforge-ai.py backend/app && echo 'Type checking passed'"
 alias dcheck="dformat && dlint && dtype && echo 'All checks passed'"
 ```
 

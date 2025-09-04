@@ -14,10 +14,10 @@ This checklist ensures that every DocForge release is high-quality, well-tested,
 ### **🧪 Testing**
 - [ ] Basic test suite passes (`python tests/test_basic.py`)
 - [ ] CLI commands work correctly:
-  - [ ] `python docforge.py init`
-  - [ ] `python docforge.py list-docs`  
-  - [ ] `python docforge.py list-projects`
-  - [ ] `python docforge.py generate "test project"`
+  - [ ] `docforge-ai init`
+  - [ ] `docforge-ai list-docs`  
+  - [ ] `docforge-ai list-projects`
+  - [ ] `docforge-ai generate "test project"`
 - [ ] Configuration system works with valid API key
 - [ ] Document generation completes successfully
 - [ ] Generated documents are properly formatted
@@ -134,7 +134,7 @@ Test installation on different platforms:
 - [ ] Verify TestPyPI package installs correctly  
 - [ ] Upload to production PyPI
 - [ ] Verify PyPI package installs correctly
-- [ ] Test `pip install docforge-opensource`
+- [ ] Test `pip install docforge-ai-opensource`
 
 ### **📢 Community Announcement**
 - [ ] Post release announcement on GitHub Discussions

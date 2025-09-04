@@ -185,7 +185,7 @@ pip install docforge-opensource
 git clone https://github.com/your-username/docforge-opensource.git
 cd docforge-opensource
 pip install -r requirements.txt
-python docforge.py init
+docforge init
 ```
 
 ---

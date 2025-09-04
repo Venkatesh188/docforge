@@ -4,7 +4,7 @@ This guide will help you install and configure DocForge on your system.
 
 ## Prerequisites
 
-- **Python 3.8 or higher** - [Download Python](https://www.python.org/downloads/)
+- **Python 3.10 or higher** - [Download Python](https://www.python.org/downloads/)
 - **OpenAI API Key** - [Get your API key](https://platform.openai.com/api-keys)
 - **Git** (for cloning) - [Download Git](https://git-scm.com/downloads)
 
@@ -14,8 +14,8 @@ This guide will help you install and configure DocForge on your system.
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/docforge-community/docforge-opensource.git
-cd docforge-opensource
+git clone https://github.com/docforge-ai-community/docforge-ai-opensource.git
+cd docforge-ai-opensource
 ```
 
 2. **Install dependencies**
@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 3. **Initialize DocForge**
 ```bash
-python docforge.py init
+docforge-ai init
 ```
 
 4. **Configure your API key**
@@ -36,14 +36,14 @@ python docforge.py init
 
 1. **Clone and install as package**
 ```bash
-git clone https://github.com/docforge-community/docforge-opensource.git
-cd docforge-opensource
+git clone https://github.com/docforge-ai-community/docforge-ai-opensource.git
+cd docforge-ai-opensource
 pip install .
 ```
 
 2. **Initialize DocForge**
 ```bash
-docforge init
+docforge-ai init
 ```
 
 3. **Configure your API key**
@@ -53,8 +53,8 @@ docforge init
 
 1. **Clone and install in development mode**
 ```bash
-git clone https://github.com/docforge-community/docforge-opensource.git
-cd docforge-opensource
+git clone https://github.com/docforge-ai-community/docforge-ai-opensource.git
+cd docforge-ai-opensource
 pip install -e .
 ```
 
@@ -76,7 +76,7 @@ pip install -e ".[dev]"
 
 1. **Run initialization** (if not done already):
 ```bash
-python docforge.py init
+docforge-ai init
 ```
 
 2. **Edit the `.env` file**:
@@ -95,7 +95,7 @@ DOCFORGE_DEFAULT_DOCS=project_charter,srs,architecture,test_specification
 
 ```bash
 # Check if DocForge is working
-python docforge.py list-docs
+docforge-ai list-docs
 
 # Should show all available document types
 ```
@@ -105,7 +105,7 @@ python docforge.py list-docs
 ### Interactive Mode (Recommended for beginners)
 
 ```bash
-python start_docforge.py
+python start_docforge-ai.py
 ```
 
 This will guide you through:
@@ -117,19 +117,19 @@ This will guide you through:
 
 ```bash
 # Generate complete documentation set
-python docforge.py generate "My awesome project idea"
+docforge-ai generate "My awesome project idea"
 
 # Generate specific document types
-python docforge.py generate "E-commerce platform" --docs project_charter,srs,architecture
+docforge-ai generate "E-commerce platform" --docs project_charter,srs,architecture
 
 # List all available document types
-python docforge.py list-docs
+docforge-ai list-docs
 
 # Check project status
-python docforge.py status my-project-name
+docforge-ai status my-project-name
 
 # List all your projects
-python docforge.py list-projects
+docforge-ai list-projects
 ```
 
 ## Troubleshooting
@@ -151,21 +151,21 @@ pip install -r requirements.txt
 - **Alternative**: Run with appropriate permissions or change directory
 
 #### 4. "Python version not supported" Error
-- **Solution**: Upgrade to Python 3.8 or higher
+- **Solution**: Upgrade to Python 3.10 or higher
 - **Check version**: `python --version`
 
 ### Getting Help
 
 1. **Check the logs**: Look for error messages in the terminal output
-2. **Verify configuration**: Run `python docforge.py init` to check setup
+2. **Verify configuration**: Run `docforge-ai init` to check setup
 3. **Test API key**: Make sure your OpenAI API key is valid and has credits
 4. **Check dependencies**: Ensure all required packages are installed
 
 ### Support Channels
 
-- **GitHub Issues**: [Report bugs or request features](https://github.com/docforge-community/docforge-opensource/issues)
-- **GitHub Discussions**: [Ask questions or share ideas](https://github.com/docforge-community/docforge-opensource/discussions)
-- **Documentation**: [Wiki](https://github.com/docforge-community/docforge-opensource/wiki)
+- **GitHub Issues**: [Report bugs or request features](https://github.com/docforge-ai-community/docforge-ai-opensource/issues)
+- **GitHub Discussions**: [Ask questions or share ideas](https://github.com/docforge-ai-community/docforge-ai-opensource/discussions)
+- **Documentation**: [Wiki](https://github.com/docforge-ai-community/docforge-ai-opensource/wiki)
 
 ## Uninstallation
 
@@ -173,10 +173,10 @@ To remove DocForge:
 
 ```bash
 # If installed as package
-pip uninstall docforge
+pip uninstall docforge-ai
 
 # Remove local files
-rm -rf docforge-opensource/
+rm -rf docforge-ai-opensource/
 rm -rf storage/
 rm -rf generated-docs/
 rm .env
@@ -188,7 +188,7 @@ To update to the latest version:
 
 ```bash
 # Navigate to DocForge directory
-cd docforge-opensource
+cd docforge-ai-opensource
 
 # Pull latest changes
 git pull origin main
@@ -201,7 +201,7 @@ pip install -r requirements.txt
 
 ### Minimum Requirements
 - **OS**: Windows 10, macOS 10.14, or Linux (Ubuntu 18.04+)
-- **Python**: 3.8 or higher
+- **Python**: 3.10 or higher
 - **RAM**: 4GB minimum, 8GB recommended
 - **Storage**: 1GB free space
 - **Internet**: Required for OpenAI API calls

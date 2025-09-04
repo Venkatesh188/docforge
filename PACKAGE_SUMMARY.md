@@ -7,11 +7,11 @@ The DocForge package has been properly organized and configured with the followi
 ### 📁 Directory Structure
 ```
 DocForge/
-├── docforge.py              # Main CLI interface (standalone)
-├── start_docforge.py        # Interactive startup script
-├── docforge/               # Package directory
+├── docforge-ai.py              # Main CLI interface (standalone)
+├── start_docforge-ai.py        # Interactive startup script
+├── docforge-ai/               # Package directory
 │   ├── __init__.py         # Package initialization
-│   └── docforge.py         # Package main module
+│   └── docforge-ai.py         # Package main module
 ├── backend/                # Core application logic
 │   └── app/
 │       ├── core/           # Configuration and settings
@@ -100,11 +100,11 @@ DocForge/
 10. **Vision Brief** - Strategic vision
 
 ### ✅ Commands Available
-- `python docforge.py init` - Initialize with document type listing
-- `python docforge.py generate "idea"` - Generate documents
-- `python docforge.py list-docs` - Show all document types
-- `python docforge.py list-projects` - List generated projects
-- `python docforge.py status project-name` - Check project status
+- `docforge-ai init` - Initialize with document type listing
+- `docforge-ai generate "idea"` - Generate documents
+- `docforge-ai list-docs` - Show all document types
+- `docforge-ai list-projects` - List generated projects
+- `docforge-ai status project-name` - Check project status
 
 ## 📋 Installation Instructions
 
@@ -118,11 +118,11 @@ cd DocForge
 pip install -r requirements.txt
 
 # 3. Initialize DocForge
-python docforge.py init
+docforge-ai init
 
 # 4. Edit .env file with OpenAI API key
 # 5. Start generating documents!
-python docforge.py generate "Your project idea"
+docforge-ai generate "Your project idea"
 ```
 
 ### For Package Installation
@@ -131,8 +131,8 @@ python docforge.py generate "Your project idea"
 pip install .
 
 # Use as command
-docforge init
-docforge generate "Your project idea"
+docforge-ai init
+docforge-ai generate "Your project idea"
 ```
 
 ## 🎯 Document Organization

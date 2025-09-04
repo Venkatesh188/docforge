@@ -13,8 +13,8 @@ from pathlib import Path
 
 def check_python_version():
     """Check if Python version is compatible"""
-    if sys.version_info < (3, 8):
-        print("❌ DocForge requires Python 3.8 or higher")
+    if sys.version_info < (3, 10):
+        print("❌ DocForge requires Python 3.10 or higher")
         print(f"   You have Python {sys.version_info.major}.{sys.version_info.minor}")
         print("   Please upgrade Python and try again")
         return False
@@ -71,10 +71,10 @@ def show_welcome():
 Generate professional software documentation from simple ideas!
 
 📋 Quick Commands:
-   Generate docs:     python docforge.py generate "Your project idea"
-   List projects:     python docforge.py list-projects  
-   Check status:      python docforge.py status project-name
-   Available docs:    python docforge.py list-docs
+   Generate docs:     docforge-ai generate "Your project idea"
+   List projects:     docforge-ai list-projects  
+   Check status:      docforge-ai status project-name
+   Available docs:    docforge-ai list-docs
 
 📁 Your documents will be saved to: ./generated-docs/
 
@@ -91,8 +91,8 @@ def main():
     print("✅ Python version compatible")
     
     # Check if we're in the right directory
-    if not Path('docforge.py').exists():
-        print("❌ docforge.py not found in current directory")
+    if not Path('docforge-ai.py').exists():
+        print("❌ docforge-ai.py not found in current directory")
         print("   Make sure you're in the DocForge root directory")
         sys.exit(1)
     print("✅ DocForge files found")
@@ -106,7 +106,7 @@ def main():
     if not check_openai_key():
         print("⚠️  OpenAI API key not configured")
         print("\n🛠️  Setup steps:")
-        print("1. Run: python docforge.py init")
+        print("1. Run: docforge-ai init")
         print("2. Edit .env file with your OpenAI API key")
         print("3. Get your key from: https://platform.openai.com/api-keys")
         print("\nThen run this script again!")
@@ -131,19 +131,19 @@ def main():
                 idea = input("\n💡 Enter your project idea: ").strip()
                 if idea:
                     print(f"\n🚀 Generating documentation for: {idea}")
-                    subprocess.run([sys.executable, 'docforge.py', 'generate', idea])
+                    subprocess.run(['docforge-ai', 'generate', idea])
                 else:
                     print("❌ Please enter a valid project idea")
                 continue
                 
             elif choice == '2':
                 print("\n📁 Listing projects...")
-                subprocess.run([sys.executable, 'docforge.py', 'list-projects'])
+                subprocess.run(['docforge-ai', 'list-projects'])
                 continue
                 
             elif choice == '3':
                 print("\n📋 Available document types...")
-                subprocess.run([sys.executable, 'docforge.py', 'list-docs'])
+                subprocess.run(['docforge-ai', 'list-docs'])
                 continue
                 
             elif choice == '4':

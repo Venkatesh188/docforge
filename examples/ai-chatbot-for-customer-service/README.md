@@ -24,7 +24,7 @@ An intelligent chatbot system designed to automate customer service interactions
 ## 🚀 **DocForge Command Used**
 
 ```bash
-python docforge.py generate "AI chatbot for customer service" --context "React frontend, Python FastAPI backend, OpenAI GPT-4 integration, CRM connectivity, multi-language support, analytics dashboard, escalation management, 24/7 operation"
+docforge-ai generate "AI chatbot for customer service" --context "React frontend, Python FastAPI backend, OpenAI GPT-4 integration, CRM connectivity, multi-language support, analytics dashboard, escalation management, 24/7 operation"
 ```
 
 ### **Command Breakdown**

@@ -6,10 +6,10 @@ A self-contained tool for generating professional software documentation
 from simple project ideas using AI agents.
 
 Usage:
-    python docforge.py generate PRD "Your project idea here"
-    python docforge.py generate "E-commerce platform" --docs srs,architecture
-    python docforge.py list-docs
-    python docforge.py status my-project
+    docforge-ai generate "Your project idea here" --docs srs
+    docforge-ai generate "E-commerce platform" --docs srs,architecture
+    docforge-ai list-docs
+    docforge-ai status my-project
 """
 
 import argparse
@@ -502,7 +502,7 @@ Please revise the PRD by incorporating the additional specifications while maint
         if not prd_info:
             return {
                 "success": False,
-                "error": f"No PRD found for project '{project_slug}'. Generate a PRD first with: docforge generate PRD \"your idea\""
+                "error": f"No PRD found for project '{project_slug}'. Generate a PRD first with: docforge-ai generate \"your idea\" --docs srs"
             }
         
         project = prd_info["project"]
@@ -651,22 +651,22 @@ async def main():
 Examples:
   # PRD-First Workflow (Recommended):
   # 1. Generate a PRD first
-  docforge.py generate PRD "AI-powered chatbot for customer service"
+  docforge-ai generate "AI-powered chatbot for customer service" --docs srs
   
   # 2. Review and optionally revise the PRD
-  docforge.py revise ai-powered-chatbot-for-customer-service -s "Add multi-language support and integration with Slack"
+  docforge-ai revise ai-powered-chatbot-for-customer-service -s "Add multi-language support and integration with Slack"
   
   # 3. Generate additional documents based on validated PRD
-  docforge.py continue ai-powered-chatbot-for-customer-service ARCH TEST DEPLOY
+  docforge-ai continue ai-powered-chatbot-for-customer-service ARCH TEST DEPLOY
   
   # Alternative: Generate all documents at once (legacy)
-  docforge.py generate "E-commerce platform for handmade crafts"
-  docforge.py generate "Mobile app" --docs srs,architecture --context "React Native, Node.js backend"
+  docforge-ai generate "E-commerce platform for handmade crafts"
+  docforge-ai generate "Mobile app" --docs srs,architecture --context "React Native, Node.js backend"
   
   # Other commands
-  docforge.py list-docs
-  docforge.py status my-ecommerce-platform
-  docforge.py list-projects
+  docforge-ai list-docs
+  docforge-ai status my-ecommerce-platform
+  docforge-ai list-projects
         """
     )
     
@@ -710,17 +710,17 @@ Examples:
         return
     
     # Initialize DocForge core
-    docforge = DocForgeCore()
+    docforge_core = DocForgeCore()
     
     if args.command == 'generate':
-        # Handle new simplified syntax: docforge generate PRD "idea"
+        # Handle legacy syntax: docforge-ai generate "idea" --docs type
         if args.idea:
-            # New syntax: docforge generate DOC_TYPE "idea"
-            resolved_doc_type = docforge._resolve_document_type(args.doc_type_or_idea)
+            # This syntax is currently not working - use legacy syntax instead
+            resolved_doc_type = docforge_core._resolve_document_type(args.doc_type_or_idea)
             if resolved_doc_type:
                 # Single document generation
                 print(f"Generating {resolved_doc_type} document...")
-                result = await docforge.generate_documents(
+                result = await docforge_core.generate_documents(
                     idea=args.idea,
                     document_types=[resolved_doc_type],
                     context=args.context,
@@ -729,19 +729,19 @@ Examples:
             else:
                 print(f"Unknown document type: {args.doc_type_or_idea}")
                 print("Available document types:")
-                aliases = docforge._get_document_type_aliases()
+                aliases = docforge_core._get_document_type_aliases()
                 for alias, doc_type in aliases.items():
                     print(f"  {alias} -> {doc_type}")
-                print("\nOr use: python docforge.py list-docs")
+                print("\nOr use: docforge-ai list-docs")
                 sys.exit(1)
         else:
-            # Legacy syntax: docforge generate "idea" [--docs ...]
+            # Legacy syntax: docforge-ai generate "idea" [--docs ...]
             # Parse document types
             doc_types = None
             if args.docs:
                 doc_types = [dt.strip() for dt in args.docs.split(',')]
             
-            result = await docforge.generate_documents(
+            result = await docforge_core.generate_documents(
                 idea=args.doc_type_or_idea,  # This is actually the idea in legacy mode
                 document_types=doc_types,
                 context=args.context,
@@ -755,45 +755,35 @@ Examples:
     elif args.command == 'list-docs':
         from app.core.simple_config import get_available_document_types
         doc_types = get_available_document_types()
-        print("Available Document Types:")
-        print("=" * 80)
+        print("📋 Available Document Types:")
+        print("=" * 60)
+        
+        # Get aliases for each document type
+        aliases = docforge_core._get_document_type_aliases()
+        
         for i, doc_type in enumerate(doc_types, 1):
             print(f"{i:2d}. {doc_type['name']}")
             print(f"    Type: {doc_type['type']}")
+            
+            # Find all aliases for this document type
+            doc_aliases = [alias for alias, doc_type_name in aliases.items() if doc_type_name == doc_type['type']]
+            if doc_aliases:
+                aliases_str = ", ".join(sorted(doc_aliases))
+                print(f"    Shortcuts: {aliases_str}")
+            
             print(f"    Description: {doc_type['description']}")
             print()
         
-        print("=" * 80)
+        print("=" * 60)
         print(f"Total: {len(doc_types)} document types available")
         
-        # Show aliases
-        aliases = docforge._get_document_type_aliases()
-        print("\nQuick Aliases (for single document generation):")
-        print("-" * 50)
-        for alias, doc_type in sorted(aliases.items()):
-            doc_name = next((dt['name'] for dt in doc_types if dt['type'] == doc_type), doc_type)
-            print(f"  {alias:<12} -> {doc_name}")
-        
-        print("\nRecommended PRD-First Workflow:")
-        print("  # 1. Generate a PRD first (includes user stories)")
-        print("  python docforge.py generate PRD \"AI-powered chatbot for customer service\"")
-        print()
-        print("  # 2. Review the PRD, then optionally revise with additional specs")
-        print("  python docforge.py revise ai-powered-chatbot-for-customer-service -s \"Add multi-language support\"")
-        print()
-        print("  # 3. Generate additional documents based on validated PRD")
-        print("  python docforge.py continue ai-powered-chatbot-for-customer-service ARCH TEST DEPLOY")
-        print()
-        print("Alternative Usage (Legacy):")
-        print("  # Generate single document:")
-        print("  python docforge.py generate ARCHITECTURE \"Mobile banking app\"")
-        print()
-        print("  # Generate multiple documents at once:")
-        print("  python docforge.py generate \"My project\" --docs project_charter,srs")
-        print("  python docforge.py generate \"My project\"  # Uses default document types")
+        print("\nUsage examples:")
+        print("  docforge-ai generate \"My project\" --docs srs,architecture")
+        print("  docforge-ai generate \"My project\" --docs PRD,ARCH")
+        print("  docforge-ai generate \"My project\"  # Uses default document types")
     
     elif args.command == 'status':
-        result = await docforge.get_project_status(args.project_slug)
+        result = await docforge_core.get_project_status(args.project_slug)
         if result["success"]:
             project = result["project"]
             print(f"📊 Project Status: {project['name']}")
@@ -810,7 +800,7 @@ Examples:
             sys.exit(1)
     
     elif args.command == 'list-projects':
-        projects = await docforge.list_projects()
+        projects = await docforge_core.list_projects()
         if projects:
             print("📁 Generated Projects:")
             for project in projects:
@@ -822,14 +812,14 @@ Examples:
                 print()
         else:
             print("📂 No projects found. Generate your first project with:")
-            print("   python docforge.py generate \"Your project idea here\"")
+            print("   docforge-ai generate \"Your project idea here\"")
     
     elif args.command == 'init':
         print("🚀 Initializing DocForge...")
         
-        # Create directories
-        docforge.generated_docs_dir.mkdir(parents=True, exist_ok=True)
-        settings.storage_path.mkdir(parents=True, exist_ok=True)
+        # Create only the generated-docs directory (storage will be created when needed)
+        generated_docs_dir = Path("generated-docs")
+        generated_docs_dir.mkdir(parents=True, exist_ok=True)
         
         # Create .env template if it doesn't exist
         env_path = Path('.env')
@@ -860,25 +850,25 @@ Examples:
             print("\n🚀 You're ready to generate documents!")
             print("\n📖 Recommended PRD-First Workflow:")
             print("   # 1. Generate a PRD first (includes user stories)")
-            print("   python docforge.py generate PRD \"Your project idea\"")
+            print("   docforge-ai generate \"Your project idea\" --docs srs")
             print()
             print("   # 2. Review the PRD, then optionally revise")
-            print("   python docforge.py revise your-project-idea -s \"Additional specifications\"")
+            print("   docforge-ai revise your-project-idea -s \"Additional specifications\"")
             print()
             print("   # 3. Generate additional documents based on validated PRD")
-            print("   python docforge.py continue your-project-idea ARCH TEST DEPLOY")
+            print("   docforge-ai continue your-project-idea ARCH TEST DEPLOY")
             print()
             print("   Alternative: Generate all documents at once:")
-            print("   python docforge.py generate \"Your project idea\"")
-            print("   python docforge.py generate \"Your project idea\" --docs project_charter,srs")
+            print("   docforge-ai generate \"Your project idea\"")
+            print("   docforge-ai generate \"Your project idea\" --docs project_charter,srs")
         else:
             print("\n📝 Next steps:")
             print("1. Edit .env file and add your OpenAI API key")
             print("2. Get your API key from: https://platform.openai.com/api-keys")
-            print("3. Run: python docforge.py generate PRD \"Your project idea\"")
+            print("3. Run: docforge-ai generate \"Your project idea\" --docs srs")
     
     elif args.command == 'revise':
-        result = await docforge.revise_prd(args.project_slug, args.specs)
+        result = await docforge_core.revise_prd(args.project_slug, args.specs)
         if result["success"]:
             print(f"SUCCESS: {result['message']}")
             if result.get('file_path'):
@@ -890,7 +880,7 @@ Examples:
             sys.exit(1)
     
     elif args.command == 'continue':
-        result = await docforge.generate_from_prd(args.project_slug, args.document_types)
+        result = await docforge_core.generate_from_prd(args.project_slug, args.document_types)
         if result["success"]:
             print(f"SUCCESS: Generated {result['documents_generated']} documents based on PRD!")
             print(f"Location: {result['project_dir']}")

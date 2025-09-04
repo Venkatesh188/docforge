@@ -60,7 +60,7 @@ Each module has one reason to change:
 
 ```mermaid
 graph TB
-    CLI[CLI Interface<br/>docforge.py] --> Core[DocForge Core<br/>Orchestration]
+    CLI[CLI Interface<br/>docforge-ai.py] --> Core[DocForge Core<br/>Orchestration]
     
     Core --> Storage[Local Storage Service<br/>File System]
     Core --> AI[Document Agent Service<br/>AI Generation]
@@ -81,7 +81,7 @@ graph TB
 
 ```
 DocForge System
-├── 🖥️  CLI Layer (docforge.py)
+├── 🖥️  CLI Layer (docforge-ai.py)
 │   ├── Command Processing
 │   ├── User Interface
 │   └── Error Handling
@@ -125,7 +125,7 @@ sequenceDiagram
     participant AI
     participant OpenAI
 
-    User->>CLI: docforge generate "Project Idea"
+    User->>CLI: docforge-ai generate "Project Idea"
     CLI->>Core: initialize(project_idea, context)
     
     Core->>Storage: create_project(metadata)
@@ -171,7 +171,7 @@ User Input
 
 ## 🧩 Core Modules
 
-### **1. DocForgeCore (docforge.py)**
+### **1. DocForgeCore (docforge-ai.py)**
 **Responsibility**: Main orchestration and workflow management
 
 ```python
@@ -651,10 +651,10 @@ DocForge is designed for simple, self-contained deployment:
 
 ```bash
 # Simple Installation
-git clone https://github.com/docforge-community/docforge-opensource.git
-cd docforge-opensource
+git clone https://github.com/docforge-ai-community/docforge-ai-opensource.git
+cd docforge-ai-opensource
 pip install -r requirements.txt
-python docforge.py init
+docforge-ai init
 ```
 
 ### **Docker Deployment**
@@ -663,7 +663,7 @@ FROM python:3.11-slim
 WORKDIR /app
 COPY . .
 RUN pip install -r requirements.txt
-CMD ["python", "docforge.py", "--help"]
+CMD ["python", "docforge-ai.py", "--help"]
 ```
 
 ### **Production Considerations**
