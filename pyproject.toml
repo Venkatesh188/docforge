@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "docforge-ai"
-version = "2.0.2"
+version = "2.0.3"
 description = "Self-contained AI-powered documentation generator"
 readme = "README.md"
 license = "MIT"
@@ -48,6 +48,7 @@ dependencies = [
     "PyYAML>=6.0.0",
     "python-slugify>=8.0.0",
     "httpx>=0.24.0",
+    "crewai>=0.141.0",
 ]
 
 [project.optional-dependencies]

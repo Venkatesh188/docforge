@@ -2,7 +2,6 @@
 # Simplified dependencies for self-contained document generation
 
 # ── Core AI & Document Generation ──────────────────────────────────
-# Note: Minimal dependencies - using OpenAI directly instead of heavy CrewAI
 openai>=1.0.0,<2.0.0
 tiktoken>=0.6.0
 
@@ -14,6 +13,9 @@ python-dotenv>=1.0.0
 # ── File Operations & Utilities ────────────────────────────────────
 PyYAML>=6.0.0
 python-slugify>=8.0.0
+
+# ── AI Orchestration (CrewAI) ──────────────────────────────────────
+crewai>=0.141.0
 
 # ── Optional: HTTP client for future integrations ─────────────────
 httpx>=0.24.0

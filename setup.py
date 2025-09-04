@@ -24,7 +24,7 @@ if req_file.exists():
 
 setup(
     name="docforge-ai",
-    version="2.0.2",
+    version="2.0.3",
     author="DocForge Community",
     author_email="community@docforge.dev",
     description="Self-contained AI-powered documentation generator",
@@ -47,7 +47,7 @@ setup(
         "Operating System :: OS Independent",
         "Environment :: Console",
     ],
-    python_requires=">=3.8",
+    python_requires=">=3.10",
     install_requires=requirements,
     extras_require={
         "dev": [
