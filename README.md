@@ -27,8 +27,6 @@ docforge-ai generate "AI-powered chatbot for customer service"
 
 > **📦 Available on PyPI**: Install with `pip install docforge-ai` or `uv pip install docforge-ai`
 
-https://youtu.be/LMP-9WBePdY
-
 
 ## 🚀 Features
 
