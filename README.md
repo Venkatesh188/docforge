@@ -1,4 +1,4 @@
-# DocForge - Open Source AI Documentation Generator
+# DocForge-ai - Open Source AI Documentation Generator
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
@@ -6,7 +6,7 @@
 [![PyPI version](https://badge.fury.io/py/docforge-ai.svg)](https://badge.fury.io/py/docforge-ai)
 [![Downloads](https://pepy.tech/badge/docforge-ai)](https://pepy.tech/project/docforge-ai)
 
-**DocForge** is a powerful, self-contained AI-powered documentation generator that transforms simple project ideas into comprehensive, professional software documentation. Built with CrewAI and OpenAI, it generates enterprise-grade documents including project charters, requirements specifications, architecture documents, and more.
+**DocForge-ai** is a powerful, self-contained AI-powered documentation generator that transforms simple project ideas into comprehensive, professional software documentation. Built with CrewAI and OpenAI, it generates enterprise-grade documents including project charters, requirements specifications, architecture documents, and more.
 
 ## 🚀 Quick Start
 
@@ -91,7 +91,7 @@ cd docforge-ai
 # Install dependencies
 pip install -r requirements.txt
 
-# Initialize DocForge (creates .env file and shows available document types)
+# Initialize DocForge-ai (creates .env file and shows available document types)
 docforge-ai init
 ```
 
@@ -99,7 +99,7 @@ docforge-ai init
 
 After installation, follow these steps:
 
-1. **Initialize DocForge:**
+1. **Initialize DocForge-ai:**
    ```bash
    docforge-ai init
    ```
@@ -302,7 +302,7 @@ docforge-ai generate "Build a mobile app" --name "MyAwesomeApp" --docs srs,archi
 
 ## 📂 Document Organization
 
-DocForge organizes your generated documents neatly:
+DocForge-ai organizes your generated documents neatly:
 
 ```
 generated-docs/
@@ -323,7 +323,7 @@ Each project gets its own directory with:
 
 ## 🎯 Document Type Selection
 
-When you run `docforge-ai init`, DocForge will show you all available document types:
+When you run `docforge-ai init`, DocForge-ai will show you all available document types:
 
 ```
 📋 Available Document Types (10):
@@ -361,7 +361,7 @@ docforge-ai generate "My project" --docs project_charter,srs,architecture
 You can customize the document generation by modifying the prompt templates in the `prompts/` directory.
 
 ### Storage Configuration
-DocForge uses local file storage by default. All data is stored in:
+DocForge-ai uses local file storage by default. All data is stored in:
 - `storage/projects/` - Project metadata (JSON files) - Created automatically when first generating documents
 - `storage/documents/` - Document metadata (JSON files) - Created automatically when first generating documents
 - `generated-docs/` - Generated markdown files organized by project - Created during initialization
@@ -373,8 +373,8 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ### Development Setup
 ```bash
 # Clone and setup development environment
-git clone https://github.com/docforge-ai-community/docforge-ai-opensource.git
-cd docforge-ai-opensource
+git clone https://github.com/Venkatesh188/docforge-ai.git
+cd docforge-ai
 
 # Install in development mode
 pip install -e .
@@ -392,9 +392,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-- **Documentation**: [Wiki](https://github.com/docforge-ai-community/docforge-ai-opensource/wiki)
-- **Issues**: [GitHub Issues](https://github.com/docforge-ai-community/docforge-ai-opensource/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/docforge-ai-community/docforge-ai-opensource/discussions)
+- **Documentation**: [Wiki](https://github.com/Venkatesh188/docforge-ai/wiki)
+- **Issues**: [GitHub Issues](https://github.com/Venkatesh188/docforge-ai/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Venkatesh188/docforge-ai/discussions)
 
 ## 🙏 Acknowledgments
 
@@ -406,4 +406,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ by the DocForge Community**
+**Made with ❤️ by the DocForge-ai Community**

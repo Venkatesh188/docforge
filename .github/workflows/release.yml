@@ -1,0 +1,103 @@
+name: 🚀 Release Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'Version bump type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+        - patch
+        - minor
+        - major
+      prerelease:
+        description: 'Create prerelease'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install bump2version
+
+    - name: Configure Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+
+    - name: Bump version
+      run: |
+        if [ "${{ inputs.version_type }}" = "patch" ]; then
+          bump2version patch
+        elif [ "${{ inputs.version_type }}" = "minor" ]; then
+          bump2version minor
+        elif [ "${{ inputs.version_type }}" = "major" ]; then
+          bump2version major
+        fi
+
+    - name: Get version
+      id: version
+      run: |
+        VERSION=$(python -c "import sys; sys.path.insert(0, 'backend'); from app.core.simple_config import SimpleSettings; print(SimpleSettings().app_version)")
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+    - name: Generate changelog
+      id: changelog
+      run: |
+        echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+        echo "## What's Changed" >> $GITHUB_OUTPUT
+        git log --pretty=format:"* %s" $(git describe --tags --abbrev=0)..HEAD >> $GITHUB_OUTPUT
+        echo "" >> $GITHUB_OUTPUT
+        echo "## Installation" >> $GITHUB_OUTPUT
+        echo "" >> $GITHUB_OUTPUT
+        echo "\`\`\`bash" >> $GITHUB_OUTPUT
+        echo "pip install docforge-ai" >> $GITHUB_OUTPUT
+        echo "# or using uv (faster)" >> $GITHUB_OUTPUT
+        echo "uv pip install docforge-ai" >> $GITHUB_OUTPUT
+        echo "\`\`\`" >> $GITHUB_OUTPUT
+        echo "" >> $GITHUB_OUTPUT
+        echo "## Quick Start" >> $GITHUB_OUTPUT
+        echo "" >> $GITHUB_OUTPUT
+        echo "\`\`\`bash" >> $GITHUB_OUTPUT
+        echo "# Initialize DocForge-ai" >> $GITHUB_OUTPUT
+        echo "docforge-ai init" >> $GITHUB_OUTPUT
+        echo "" >> $GITHUB_OUTPUT
+        echo "# Generate your first documentation" >> $GITHUB_OUTPUT
+        echo "docforge-ai generate \"Your project idea here\"" >> $GITHUB_OUTPUT
+        echo "\`\`\`" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ steps.version.outputs.version }}
+        release_name: DocForge-ai v${{ steps.version.outputs.version }}
+        body: ${{ steps.changelog.outputs.CHANGELOG }}
+        draft: false
+        prerelease: ${{ inputs.prerelease }}
+
+    - name: Push changes
+      run: |
+        git push origin main
+        git push origin v${{ steps.version.outputs.version }}

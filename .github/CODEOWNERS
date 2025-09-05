@@ -1,0 +1,32 @@
+# Code Owners for DocForge-ai
+# This file defines who can review and approve changes to specific parts of the codebase
+
+# Global code owners - all files require approval from @Venkatesh188
+* @Venkatesh188
+
+# Critical configuration files
+/pyproject.toml @Venkatesh188
+/setup.py @Venkatesh188
+/requirements.txt @Venkatesh188
+/requirements-dev.txt @Venkatesh188
+
+# Documentation
+/README.md @Venkatesh188
+/DEVELOPMENT.md @Venkatesh188
+/docs/ @Venkatesh188
+
+# GitHub configuration
+/.github/ @Venkatesh188
+
+# Core application code
+/backend/ @Venkatesh188
+/docforge/ @Venkatesh188
+
+# CI/CD and build configuration
+/Makefile @Venkatesh188
+/.pre-commit-config.yaml @Venkatesh188
+/pytest.ini @Venkatesh188
+
+# Package configuration
+/MANIFEST.in @Venkatesh188
+/LICENSE @Venkatesh188

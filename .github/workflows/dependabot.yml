@@ -1,0 +1,42 @@
+name: 🤖 Dependabot Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  dependabot:
+    name: Dependabot PR Review
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    
+    steps:
+    - name: Dependabot metadata
+      id: metadata
+      uses: dependabot/fetch-metadata@v1
+      with:
+        github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+    - name: Comment on Dependabot PR
+      if: steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor'
+      run: |
+        gh pr comment "$PR_URL" --body "🤖 **Dependabot Update Detected**
+        
+        **Update Type:** ${{ steps.metadata.outputs.update-type }}
+        **Package:** ${{ steps.metadata.outputs.dependency-names }}
+        **From:** ${{ steps.metadata.outputs.previous-version }}
+        **To:** ${{ steps.metadata.outputs.new-version }}
+        
+        ⚠️ **Manual Review Required** - Please review and approve this update manually.
+        
+        This PR requires manual approval before merging."
+      env:
+        PR_URL: ${{github.event.pull_request.html_url}}
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    - name: Add labels to Dependabot PR
+      run: |
+        gh pr edit "$PR_URL" --add-label "dependencies,needs-review"
+      env:
+        PR_URL: ${{github.event.pull_request.html_url}}
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

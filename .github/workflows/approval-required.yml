@@ -1,0 +1,122 @@
+name: 🔒 Manual Approval Required
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action to perform'
+        required: true
+        type: choice
+        options:
+        - 'approve-dependabot'
+        - 'approve-dependency-update'
+        - 'emergency-merge'
+        - 'force-publish'
+      pr_number:
+        description: 'Pull Request number (for approval actions)'
+        required: false
+        type: string
+      reason:
+        description: 'Reason for manual action'
+        required: true
+        type: string
+
+jobs:
+  manual-approval:
+    name: Manual Approval Action
+    runs-on: ubuntu-latest
+    if: github.actor == 'Venkatesh188'
+    
+    steps:
+    - name: Check actor permissions
+      run: |
+        if [ "${{ github.actor }}" != "Venkatesh188" ]; then
+          echo "❌ Only @Venkatesh188 can perform manual approval actions"
+          exit 1
+        fi
+        echo "✅ Authorized user: ${{ github.actor }}"
+
+    - name: Approve Dependabot PR
+      if: inputs.action == 'approve-dependabot'
+      run: |
+        if [ -z "${{ inputs.pr_number }}" ]; then
+          echo "❌ PR number is required for dependabot approval"
+          exit 1
+        fi
+        
+        echo "🤖 Approving Dependabot PR #${{ inputs.pr_number }}"
+        gh pr review ${{ inputs.pr_number }} --approve --body "✅ **Manual Approval by @Venkatesh188**
+        
+        **Reason:** ${{ inputs.reason }}
+        
+        **Approved at:** $(date)
+        
+        This Dependabot PR has been manually reviewed and approved."
+        
+        echo "✅ Dependabot PR #${{ inputs.pr_number }} approved"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Approve Dependency Update PR
+      if: inputs.action == 'approve-dependency-update'
+      run: |
+        if [ -z "${{ inputs.pr_number }}" ]; then
+          echo "❌ PR number is required for dependency update approval"
+          exit 1
+        fi
+        
+        echo "📦 Approving Dependency Update PR #${{ inputs.pr_number }}"
+        gh pr review ${{ inputs.pr_number }} --approve --body "✅ **Manual Approval by @Venkatesh188**
+        
+        **Reason:** ${{ inputs.reason }}
+        
+        **Approved at:** $(date)
+        
+        This dependency update has been manually reviewed and approved."
+        
+        echo "✅ Dependency Update PR #${{ inputs.pr_number }} approved"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Emergency Merge
+      if: inputs.action == 'emergency-merge'
+      run: |
+        if [ -z "${{ inputs.pr_number }}" ]; then
+          echo "❌ PR number is required for emergency merge"
+          exit 1
+        fi
+        
+        echo "🚨 Performing emergency merge for PR #${{ inputs.pr_number }}"
+        gh pr merge ${{ inputs.pr_number }} --merge --delete-branch --body "🚨 **Emergency Merge by @Venkatesh188**
+        
+        **Reason:** ${{ inputs.reason }}
+        
+        **Merged at:** $(date)
+        
+        This PR was merged under emergency circumstances with manual override."
+        
+        echo "✅ Emergency merge completed for PR #${{ inputs.pr_number }}"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Force Publish
+      if: inputs.action == 'force-publish'
+      run: |
+        echo "🚀 Force publishing to PyPI"
+        echo "**Reason:** ${{ inputs.reason }}"
+        
+        # This would trigger the publish workflow manually
+        gh workflow run "CI/CD Pipeline" --ref main
+        
+        echo "✅ Force publish workflow triggered"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Log Action
+      run: |
+        echo "📝 Logging manual action:"
+        echo "  Action: ${{ inputs.action }}"
+        echo "  PR: ${{ inputs.pr_number }}"
+        echo "  Reason: ${{ inputs.reason }}"
+        echo "  Actor: ${{ github.actor }}"
+        echo "  Timestamp: $(date)"

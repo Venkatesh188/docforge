@@ -30,7 +30,7 @@ setup(
     description="Self-contained AI-powered documentation generator",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/Venkatesh188/docforge",
+    url="https://github.com/Venkatesh188/docforge-ai",
     packages=find_packages(include=["backend*", "prompts*", "docforge*"]),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -89,10 +89,10 @@ setup(
         "markdown"
     ],
     project_urls={
-        "Bug Reports": "https://github.com/Venkatesh188/docforge/issues",
-        "Feature Requests": "https://github.com/Venkatesh188/docforge/issues/new?template=feature_request.yml",
-        "Documentation": "https://github.com/Venkatesh188/docforge/wiki",
-        "Source": "https://github.com/Venkatesh188/docforge",
+        "Bug Reports": "https://github.com/Venkatesh188/docforge-ai/issues",
+        "Feature Requests": "https://github.com/Venkatesh188/docforge-ai/issues/new?template=feature_request.yml",
+        "Documentation": "https://github.com/Venkatesh188/docforge-ai/wiki",
+        "Source": "https://github.com/Venkatesh188/docforge-ai",
         "PyPI": "https://pypi.org/project/docforge-ai/",
     },
     zip_safe=False,
