@@ -27,6 +27,7 @@ docforge-ai generate "AI-powered chatbot for customer service"
 
 > **📦 Available on PyPI**: Install with `pip install docforge-ai` or `uv pip install docforge-ai`
 
+
 ## 🚀 Features
 
 - **PRD-First Workflow**: Start with a Product Requirements Document including user stories, validate, then expand
@@ -53,6 +54,12 @@ docforge-ai generate "AI-powered chatbot for customer service"
 8. **Business Case** - ROI analysis and business justification for the project
 9. **Market Requirements** - Market analysis and user requirements documentation
 10. **Vision Brief** - Strategic vision and opportunity brief for stakeholders
+
+
+## 🎥 Demo Video
+Check out the quick demo of **DocForge-AI** in action:  
+[![DocForge-AI Demo](https://img.youtube.com/vi/LMP-9WBePdY/0.jpg)](https://youtu.be/LMP-9WBePdY)
+
 
 ## 🛠️ Installation
 
@@ -406,4 +413,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ by the DocForge-ai Community**
+**Made with ❤️ by the DocForge Community**
