@@ -1,4 +1,4 @@
-# DocForge - Open Source AI Documentation Generator
+# DocForge-ai - Open Source AI Documentation Generator
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
@@ -6,7 +6,7 @@
 [![PyPI version](https://badge.fury.io/py/docforge-ai.svg)](https://badge.fury.io/py/docforge-ai)
 [![Downloads](https://pepy.tech/badge/docforge-ai)](https://pepy.tech/project/docforge-ai)
 
-**DocForge** is a powerful, self-contained AI-powered documentation generator that transforms simple project ideas into comprehensive, professional software documentation. Built with CrewAI and OpenAI, it generates enterprise-grade documents including project charters, requirements specifications, architecture documents, and more.
+**DocForge-ai** is a powerful, self-contained AI-powered documentation generator that transforms simple project ideas into comprehensive, professional software documentation. Built with CrewAI and OpenAI, it generates enterprise-grade documents including project charters, requirements specifications, architecture documents, and more.
 
 ## 🚀 Quick Start
 
@@ -26,6 +26,9 @@ docforge-ai generate "AI-powered chatbot for customer service"
 ```
 
 > **📦 Available on PyPI**: Install with `pip install docforge-ai` or `uv pip install docforge-ai`
+
+https://youtu.be/LMP-9WBePdY
+
 
 ## 🚀 Features
 
@@ -53,6 +56,12 @@ docforge-ai generate "AI-powered chatbot for customer service"
 8. **Business Case** - ROI analysis and business justification for the project
 9. **Market Requirements** - Market analysis and user requirements documentation
 10. **Vision Brief** - Strategic vision and opportunity brief for stakeholders
+
+
+## 🎥 Demo Video
+Check out the quick demo of **DocForge-AI** in action:  
+[![DocForge-AI Demo](https://img.youtube.com/vi/LMP-9WBePdY/0.jpg)](https://youtu.be/LMP-9WBePdY)
+
 
 ## 🛠️ Installation
 
@@ -323,7 +332,7 @@ Each project gets its own directory with:
 
 ## 🎯 Document Type Selection
 
-When you run `docforge-ai init`, DocForge will show you all available document types:
+When you run `docforge-ai init`, DocForge-ai will show you all available document types:
 
 ```
 📋 Available Document Types (10):
@@ -406,4 +415,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ by the DocForge Community**
+**Made with ❤️ by the DocForge-ai Community**
